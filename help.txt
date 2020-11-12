@@ -1,0 +1,18 @@
+List of commands used in FinTra
+Note: FinTra commands are case-sensitive, be careful while typing any commands.
+
+WARNING: month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
+table_name : Month : Category = amount	Usage: entering the value     Example: income : Apr : Sales = 101
+table_name : Month : Category + amount	Usage: editing the value by adding      Example: income : Apr : Sales + 101
+table_name : Month : Category - amount	Usage: editing the value by subtracting     Example: income : Apr : Sales - 101
+table_name : Month : Category * amount	Usage: editing the value by multiplying     Example: income : Apr : Sales * 101
+table_name : Month : Category / amount	Usage: editing the value by dividing      Example: income : Apr : Sales / 101
+WARNING: use the editing commands only if there is some value existing in a given month and category, do not use it on NaN.
+
+inbar		Check the bar charts of categories under Income Table
+exbar		Check the bar charts of categories under Expense Table
+
+help		Shows this help
+show		Shows the Income and Expense Tables
+save		Saves the data
+exit		Saves the data and exits FinTra
