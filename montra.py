@@ -10,11 +10,11 @@ cfc.create_file()
 file = open('help.txt','r')
 inc = pd.read_csv('income.csv', index_col=0)
 exp = pd.read_csv('outgo.csv', index_col=0)
-print("Welcome to FinTra λ\nOne-Stop CLI-Based Finance-Tracker")
+print("Welcome to MonTra λ\nOne-Stop CLI-Based Finance-Tracker")
 print("All the figures mentioned by the user are the currency of the user's country.")
 while True:
     mnt = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar']
-    cmd = input('Fintra λ ')
+    cmd = input('MonTra λ ')
     cmdl = cmd.split()
 
     if cmdl[0] == 'income':
@@ -51,8 +51,8 @@ while True:
             print(exp)  
 
     elif cmd == 'credits':
-        print("Developed by:")
-        print("Sneh Gupta\tShubham Shah\tAnushree Rane")           
+        print("Developers:")
+        print("Sneh Gupta\tYash Patel\tDhruvil Joshi")           
             
     elif cmd == 'save':
         inc.to_csv('income.csv')
@@ -61,7 +61,7 @@ while True:
     elif cmd == 'help':
         print(file.read())
         print("Developed by:")
-        print("Sneh Gupta\tShubham Shah\tAnushree Rane")
+        print("Sneh Gupta\tYash Patel\tDhruvil Joshi")
 
     elif cmd == 'show':
         print('Income Table:\n',inc)
