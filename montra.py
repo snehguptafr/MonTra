@@ -3,6 +3,14 @@
 import ent_montra
 import dom_montra
 
+#ascii art
+print("""███    ███  ██████  ███    ██ ████████ ██████   █████  
+████  ████ ██    ██ ████   ██    ██    ██   ██ ██   ██ 
+██ ████ ██ ██    ██ ██ ██  ██    ██    ██████  ███████ 
+██  ██  ██ ██    ██ ██  ██ ██    ██    ██   ██ ██   ██ 
+██      ██  ██████  ██   ████    ██    ██   ██ ██   ██""")
+
+
 while True:
     #main menu for selection of edition.
     print("\nHello there! Welcome to MonTra!")
