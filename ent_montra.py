@@ -24,18 +24,15 @@ def e_montra():
     expl = ['Purchase','Electricity','Telecom','Rent','Interest','Salary/Wages','Maintenance','Tax','Travelling','Advertisement','Inventory Costs','Insurance','Other']
     sym = ['=','+','-','*','/']
     syn_er = "There's a syntax error in your command, please recheck."
-    next_cmd = 0
+    edit = False
+    saved = 1
 
     while True:
         cmd = input('\nMonTra λ ')
         cmdl = cmd.split()
         suc = 0
         err = 0
-        next_cmd += 1
-        if next_cmd == 1:
-            saved = 1
 
-        #['income',':','Apr',':','Sales','=',2000]
         try:
             if cmdl[0] == 'income' and len(cmdl) == 7:
                 if cmdl[2] in mnt and cmdl[4] in incl and cmdl[5] in sym and cmdl[1] == ':' and cmdl[3] == ':' and type(float(cmdl[6])) is float:
@@ -55,6 +52,8 @@ def e_montra():
                         inc.loc[cmdl[2],cmdl[4]] /= float(cmdl[6])
                         print(tb.tabulate(inc, headers = 'keys', tablefmt = 'psql'))
                     suc = 1
+                    edit = True
+                    saved = 0
                     
                 else:
                     print(syn_er)
@@ -78,6 +77,9 @@ def e_montra():
                         exp.loc[cmdl[2],cmdl[4]] /= float(cmdl[6])
                         print(tb.tabulate(exp, headers = 'keys', tablefmt = 'psql'))
                     suc = 1
+                    edit = True
+                    saved = 0
+
                 else:
                     print(syn_er)
                     err = 1
@@ -88,68 +90,70 @@ def e_montra():
         except IndexError:
             print("'' - not a command, try again.")
             err = 1
-            next_cmd = 0
+        try:
+            if cmdl[0] == 'credits':
+                print("Developers:")
+                print("Sneh Gupta\tYash Patel\tDhruvil Joshi")           
+                    
+            elif cmdl[0] == 'save':
+                inc.to_csv('ent_income.csv')
+                exp.to_csv('ent_expense.csv')
+                saved = 1
+                edit = False
 
-        if cmdl[0] == 'credits':
-            print("Developers:")
-            print("Sneh Gupta\tYash Patel\tDhruvil Joshi")           
-                
-        elif cmdl[0] == 'save':
-            inc.to_csv('ent_income.csv')
-            exp.to_csv('ent_expense.csv')
-            next_cmd = 0
+            elif cmdl[0] == 'help':
+                print(file.read())
 
-        elif cmdl[0] == 'help':
-            print(file.read())
+            elif cmdl[0] == 'show':
+                print("INCOME Table\n", tb.tabulate(inc, headers = 'keys', tablefmt = 'psql'))
+                print("EXPENSE Table\n", tb.tabulate(exp, headers = 'keys', tablefmt = 'psql'))
 
-        elif cmdl[0] == 'show':
-            print("INCOME Table\n", tb.tabulate(inc, headers = 'keys', tablefmt = 'psql'))
-            print("EXPENSE Table\n", tb.tabulate(exp, headers = 'keys', tablefmt = 'psql'))
-
-        elif cmdl[0] == 'plot':
-            alls = input('Mention income/expense category(ies)(separate them by space) which you wish to observe graphically: ')
-            lall = alls.split()
-            if len(lall) == 0:
-                print("'' - invalid income/expense")
-            elif len(lall) > 0:
-                for items in lall:
-                    if items in incl:
-                        plt.plot(mnt, list(inc[items]), label = items)
-                        plt.xlabel('Months')
-                        plt.ylabel('Amount')
-                        plt.legend()
-                    elif items in expl:
-                        plt.plot(mnt, list(exp[items]), label = items)
-                        plt.xlabel('Months')
-                        plt.ylabel('Amount')
-                        plt.legend()
-                plt.show()
-            else:
-                print('Invalid income selection')
-            
-        elif cmdl[0] == 'exit':
-            if saved == 1 and next_cmd == 1:
-                print("Exiting...\nDone")
-                break
-            while True:
-                save = input('Save and exit?[Y/n]: ')
-                if save == 'n':
-                    print('Exiting...\nDone')
-                    break
-                elif save == 'y' or save == 'Y' or save == '':
-                    print('Saving and exiting...\nDone')
-                    inc.to_csv('ent_income.csv')
-                    exp.to_csv('ent_expense.csv')
-                    break
+            elif cmdl[0] == 'plot':
+                alls = input('Mention income/expense category(ies)(separate them by space) which you wish to observe graphically: ')
+                lall = alls.split()
+                if len(lall) == 0:
+                    print("'' - invalid income/expense")
+                elif len(lall) > 0:
+                    for items in lall:
+                        if items in incl:
+                            plt.plot(mnt, list(inc[items]), label = items)
+                            plt.xlabel('Months')
+                            plt.ylabel('Amount')
+                            plt.legend()
+                        elif items in expl:
+                            plt.plot(mnt, list(exp[items]), label = items)
+                            plt.xlabel('Months')
+                            plt.ylabel('Amount')
+                            plt.legend()
+                    plt.show()
                 else:
-                    print('Invalid selection')  
-            break
+                    print('Invalid income selection')
+                
+            elif cmdl[0] == 'exit':
+                if saved == 1 and edit == False:
+                    print("Exiting...\nDone")
+                    break
+                while True:
+                    save = input('Save and exit?[Y/n]: ')
+                    if save == 'n':
+                        print('Exiting...\nDone')
+                        break
+                    elif save == 'y' or save == 'Y' or save == '':
+                        print('Saving and exiting...\nDone')
+                        inc.to_csv('ent_income.csv')
+                        exp.to_csv('ent_expense.csv')
+                        break
+                    else:
+                        print('Invalid selection')  
+                break
 
-        else:
-            if err == 1 or suc == 1:
-                pass
             else:
-                print("'"+cmd+"'-",'not a command, try again.')
+                if err == 1 or suc == 1:
+                    pass
+                else:
+                    print("'"+cmd+"'-",'not a command, try again.')
+        except IndexError:
+            pass
 
 if __name__ == '__main__':
     e_montra()
