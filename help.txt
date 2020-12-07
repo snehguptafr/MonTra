@@ -9,10 +9,10 @@ table_name : Month : Category * amount	Usage: editing the value by multiplying  
 table_name : Month : Category / amount	Usage: editing the value by dividing        Example: income : Apr : Sales / 101
 
 WARNING: month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
-WARNING: use the editing commands only if there is some value existing in a given month and category, do not use it on NaN.
+WARNING: use the amount editing/updating commands only if there is some value existing in a given month and category, do not use it on NaN.
 
 plot        Observe the trends of income and/or expense categories
 help		Shows this help
 show		Shows the Income and Expense Tables
-save		Saves the data
-exit		Saves the data and exits MonTra
+save		Saves the changes in Income and Expense tables
+exit		Saves the changes in Income and Expense tables and exits MonTra

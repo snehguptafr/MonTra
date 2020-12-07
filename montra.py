@@ -1,7 +1,10 @@
+#The main file to control access to bothe the editions
+#importing Enterprise and Household editions.
 import ent_montra
 import dom_montra
 
 while True:
+    #main menu for selection of edition.
     print("\nHello there! Welcome to MonTra!")
     print("Which MonTra edition would you like to you use?")
     choice = input("\n0. Exit\n1. Household Edition\n2. Enterprise Edition\nEnter your choice: ")
@@ -16,4 +19,4 @@ while True:
         else:
             print("Invalid selection, try again.")
     except ValueError:
-        print("Invalid Selection, try again.")
+        print("Invalid Selection, try again.")      #ValueError handling to avoid crashing.

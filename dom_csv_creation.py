@@ -1,6 +1,8 @@
+#importing required modules
 import pandas as pd
 import numpy as np
 
+#function to create or check required files
 def create_file():
     try:
         exp = pd.read_csv('dom_expense.csv')
@@ -14,5 +16,6 @@ def create_file():
         inc = pd.DataFrame({'Earnings': np.NaN,'Interest_on_Investments': np.NaN,'Dividend': np.NaN,'Rent': np.NaN,'Other_inc': np.NaN}, index=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar"])
         inc.to_csv("dom_income.csv")
 
+#if this file is run as main, run this function.
 if __name__ == '__main__':
     create_file()
