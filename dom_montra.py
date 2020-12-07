@@ -90,23 +90,23 @@ def d_montra():
             err = 1
             next_cmd = 0
 
-        if cmd == 'credits':
+        if cmdl[0] == 'credits':
             print("Developers:")
             print("Sneh Gupta\tYash Patel\tDhruvil Joshi")           
                 
-        elif cmd == 'save':
+        elif cmdl[0] == 'save':
             inc.to_csv('dom_income.csv')
             exp.to_csv('dom_expense.csv')
             next_cmd = 0
 
-        elif cmd == 'help':
+        elif cmdl[0] == 'help':
             print(file.read())
 
-        elif cmd == 'show':
+        elif cmdl[0] == 'show':
             print("INCOME Table\n", tb.tabulate(inc, headers = 'keys', tablefmt = 'psql'))
             print("EXPENSE Table\n", tb.tabulate(exp, headers = 'keys', tablefmt = 'psql'))
 
-        elif cmd == 'plot':
+        elif cmdl[0] == 'plot':
             alls = input('Mention income/expense category(ies)(separate them by space) which you wish to observe graphically: ')
             lall = alls.split()
             if len(lall) == 0:
@@ -127,7 +127,7 @@ def d_montra():
             else:
                 print('Invalid income selection')
             
-        elif cmd == 'exit':
+        elif cmdl[0] == 'exit':
             if saved == 1 and next_cmd == 1:
                 print("Exiting...\nDone")
                 break
