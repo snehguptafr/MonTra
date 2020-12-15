@@ -39,6 +39,14 @@ def e_montra():
         suc = 0                         #initializing error and success scores.
         err = 0
 
+        #creating dataframe to contain average incomes and expenses
+        inc2 = inc.fillna(0, inplace = False)
+        avg_i = inc2.mean()
+        avg_inc = pd.DataFrame({'Average income': avg_i}, index = avg_i.index[:])
+        exp2 = exp.fillna(0, inplace = False)
+        avg_e = exp2.mean()
+        avg_exp = pd.DataFrame({'Average expense': avg_e}, index = avg_e.index[:])
+
         try:                                            #Try and Except block for editing commands.
             if cmdl[0] == 'income' and len(cmdl) == 7:  #command structure check.
                 if cmdl[2] in mnt and cmdl[4] in incl and cmdl[5] in sym and cmdl[1] == ':' and cmdl[3] == ':' and type(float(cmdl[6])) is float:
@@ -113,6 +121,20 @@ def e_montra():
             elif cmdl[0] == 'show':                     #command to show the tables.
                 print("INCOME Table\n", tb.tabulate(inc, headers = 'keys', tablefmt = 'psql'))      #displaying the tables in PostgreSQL table
                 print("EXPENSE Table\n", tb.tabulate(exp, headers = 'keys', tablefmt = 'psql'))     #format with the help of 'tabulate' module.
+
+            elif cmdl[0:2] == ['avg','tables']:         #command to display averages of all incomes and expenses.
+                print(tb.tabulate(avg_inc, headers = 'keys', tablefmt = 'psql'))
+                print(tb.tabulate(avg_exp, headers = 'keys', tablefmt = 'psql'))
+
+            elif cmdl[0:3] == ['avg','income','plot']:  #command to display graph of average incomes.
+                plt.bar(avg_inc.index[:],avg_inc['Average income'])
+                plt.xticks(rotation = 15)
+                plt.show()
+            
+            elif cmdl[0:3] == ['avg','expense','plot']: #command to display graph of average expenses.
+                plt.bar(avg_exp.index[:],avg_exp['Average expense'])
+                plt.xticks(rotation = 15)
+                plt.show()
 
             elif cmdl[0] == 'plot':                     #command to plot income and expense heads.
                 alls = input('Mention income/expense category(ies)(separate them by space) which you wish to observe graphically: ')
