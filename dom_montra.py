@@ -9,7 +9,7 @@ try:
     import tabulate as tb
 
 except:
-    print("Please install the required modules:\nMatplotlib\nPandas\nTabulate\n")
+    print("Please install the required modules:\nMatplotlib\nPandas\nTabulate\nNumPy\n")
     sys.exit()
     
 #defining MonTra Household Edition's core function
@@ -150,7 +150,7 @@ def d_montra():
                 lall = alls.split()
                 if len(lall) == 0:
                     print("'' - invalid income/expense")
-                    
+
                 elif len(lall) > 0:
                     for items in lall:
                         if items in incl:

@@ -1,8 +1,19 @@
-#The main file to control access to bothe the editions
+#The main file to control access to both the editions
 #importing Enterprise and Household editions.
 import ent_montra
 import dom_montra
+import sys
 
+try:
+    import numpy as np
+    import pandas as pd
+    import tabulate as tb
+    import matplotlib.pyplot as plt
+
+except ImportError:
+    print("Please install Required modules:\nMatplotlib\nPandas\nTabulate\nNumPy\n")
+    sys.exit()
+    
 #ascii art
 print("""███    ███  ██████  ███    ██ ████████ ██████   █████  
 ████  ████ ██    ██ ████   ██    ██    ██   ██ ██   ██ 
@@ -19,6 +30,7 @@ while True:
     try:
         choice = int(choice)
         if choice == 0:
+            print("Goodbye!")
             break
         elif choice == 1:
             dom_montra.d_montra()
