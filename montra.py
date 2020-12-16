@@ -1,9 +1,7 @@
 #The main file to control access to both the editions
-#importing Enterprise and Household editions.
-import ent_montra
-import dom_montra
 import sys
 
+#importing external modules
 try:
     import numpy as np
     import pandas as pd
@@ -13,7 +11,11 @@ try:
 except ImportError:
     print("Please install Required modules:\nMatplotlib\nPandas\nTabulate\nNumPy\n")
     sys.exit()
-    
+
+#importing both the editions
+import ent_montra
+import dom_montra    
+
 #ascii art
 print("""███    ███  ██████  ███    ██ ████████ ██████   █████  
 ████  ████ ██    ██ ████   ██    ██    ██   ██ ██   ██ 
