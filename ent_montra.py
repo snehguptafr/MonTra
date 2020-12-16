@@ -7,6 +7,7 @@ try:
     import matplotlib.pyplot as plt
     import pandas as pd
     import tabulate as tb
+
 except:
     print("Please install the required modules:\nMatplotlib\nPandas\nTabulate\n")
     sys.exit()
@@ -129,11 +130,19 @@ def e_montra():
             elif cmdl[0:3] == ['avg','income','plot']:  #command to display graph of average incomes.
                 plt.bar(avg_inc.index[:],avg_inc['Average income'])
                 plt.xticks(rotation = 15)
+                plt.xlabel("Income Categories")
+                plt.ylabel("Amount")
+                plt.title("Average Income")                
+                plt.tight_layout()
                 plt.show()
             
             elif cmdl[0:3] == ['avg','expense','plot']: #command to display graph of average expenses.
                 plt.bar(avg_exp.index[:],avg_exp['Average expense'])
                 plt.xticks(rotation = 15)
+                plt.xlabel("Expense Categories")
+                plt.ylabel("Amount")
+                plt.title("Average Expense")
+                plt.tight_layout()
                 plt.show()
 
             elif cmdl[0] == 'plot':                     #command to plot income and expense heads.
@@ -141,6 +150,7 @@ def e_montra():
                 lall = alls.split()
                 if len(lall) == 0:
                     print("'' - invalid income/expense")
+                    
                 elif len(lall) > 0:
                     for items in lall:
                         if items in incl:
@@ -148,11 +158,13 @@ def e_montra():
                             plt.xlabel('Months')
                             plt.ylabel('Amount')
                             plt.legend()
+                            plt.tight_layout()
                         elif items in expl:
                             plt.plot(mnt, list(exp[items]), label = items)
                             plt.xlabel('Months')
                             plt.ylabel('Amount')
                             plt.legend()
+                            plt.tight_layout()
                         elif items not in incl and items not in expl:
                             print('Invalid income/expense selection')
                     plt.show()
