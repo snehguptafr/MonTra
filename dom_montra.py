@@ -7,6 +7,7 @@ try:
     import matplotlib.pyplot as plt
     import pandas as pd
     import tabulate as tb
+    import numpy as np
 
 except:
     print("Please install the required modules:\nMatplotlib\nPandas\nTabulate\nNumPy\n")
@@ -115,6 +116,35 @@ def d_montra():
                 exp.to_csv('dom_expense.csv')
                 saved = 1                               #redifining certain attributes
                 edit = False
+
+            elif cmdl[0:2] == ['new','session']:
+                risk = input("WARNING: This will overwrite all data, do you want to continue?(existing data can be saved)[y/N]: ")
+                if risk == 'Y' or risk == 'y':
+                    while True:
+                        store = input("Store existing CSV files in the system?[Y/n]: ")
+                        if store == 'y' or store == 'Y' or store == '':
+                            inc_name = input("Enter name for income CSV file(do not add extension): ")
+                            exp_name = input("Enter name for expense CSV file(do not add extension): ")
+                            inc.to_csv(inc_name+'.csv')
+                            exp.to_csv(exp_name+'.csv')
+                            inc = pd.DataFrame({'Earnings': np.NaN,'Interest_on_Investments': np.NaN,'Dividend': np.NaN,'Rent': np.NaN,'Other_inc': np.NaN}, index=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar"])
+                            inc.to_csv("dom_income.csv")
+                            exp = pd.DataFrame({'Housing': np.NaN,'Electricity': np.NaN,'Telecom': np.NaN,'Groceries': np.NaN,'Entertainment': np.NaN,'Healthcare': np.NaN,'Insurance': np.NaN,'Tax': np.NaN,'Other': np.NaN}, index=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec", "Jan","Feb","Mar"])
+                            exp.to_csv('dom_expense.csv')
+                            print("Files exported, new tables created.")
+                            break
+                        elif store == 'n' or store == 'N':
+                            inc = pd.DataFrame({'Earnings': np.NaN,'Interest_on_Investments': np.NaN,'Dividend': np.NaN,'Rent': np.NaN,'Other_inc': np.NaN}, index=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar"])
+                            inc.to_csv("dom_income.csv")
+                            exp = pd.DataFrame({'Housing': np.NaN,'Electricity': np.NaN,'Telecom': np.NaN,'Groceries': np.NaN,'Entertainment': np.NaN,'Healthcare': np.NaN,'Insurance': np.NaN,'Tax': np.NaN,'Other': np.NaN}, index=["Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec", "Jan","Feb","Mar"])
+                            exp.to_csv('dom_expense.csv')
+                            print("New tables created.")
+                            break
+                        else:
+                            print("Invalid Selection, try again.")
+                            break
+                else:
+                    print("No new sessions created.")
 
             elif cmdl[0] == 'help':                     #command for help which reads out help.txt.
                 print(file.read())
