@@ -24,9 +24,9 @@ Install Tabulate - `pip install tabulate`
 
 #### List of Commands
 
-**Note**
-1: Commands are same for both the editions - Household and Enterprise.
-2: MonTra commands are case-sensitive, be careful while typing any commands.
+Note
+ - Commands are same for both the editions - Household and Enterprise.
+ - MonTra commands are case-sensitive, be careful while typing any commands.
 
 | Command Structure | Usage | Example |
 |-------------------|-------|---------|
@@ -36,9 +36,9 @@ Install Tabulate - `pip install tabulate`
 | table_name : Month : Category * amount | editing the value by multiplying | `income : Apr : Sales * 101`
 | table_name : Month : Category / amount | editing the value by dividing | `income : Apr : Sales / 101`
 
-**WARNING**
-1: month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
-2: use the amount editing/updating commands only if there is some value existing in a given month and category, do not use it on NaN.
+WARNING
+ - month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
+ - use the amount editing/updating commands only if there is some value existing in a given month and category, do not use it on NaN.
 
 | Commands | Function |
 | ------ | ------ |
