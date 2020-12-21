@@ -1,7 +1,7 @@
 # MonTra
 **MonTra** is a simple yet efficient CLI-Based Finance Tracker based on Python. Easily track your incomes and expenses with just a few commands.
 
-#### Features
+### Features
   - Intuitive and easy command structure.
   - Command Line Interface for high performance with low power consumption.
   - Data Visualisation of your incomes and expenses.
@@ -11,7 +11,7 @@
   - Free and Open Source Software.
   - Lightweight.
 
-#### Python Libraries Used
+### Python Libraries Used
 The following Python Libraries(external) are used in MonTra -
  - **Pandas** - to carry out major data manipulation tasks.
 Install Pandas - `pip install pandas`
@@ -22,9 +22,9 @@ Install Matplotib - `pip install matplotlib`
  - **Tabulate** - to render DataFrame in MySQL table format.
 Install Tabulate - `pip install tabulate`
 
-#### List of Commands
+### List of Commands
 
-Note
+**Note**
  - Commands are same for both the editions - Household and Enterprise.
  - MonTra commands are case-sensitive, be careful while typing any commands.
 
@@ -36,7 +36,7 @@ Note
 | table_name : Month : Category * amount | editing the value by multiplying | `income : Apr : Sales * 101`
 | table_name : Month : Category / amount | editing the value by dividing | `income : Apr : Sales / 101`
 
-WARNING
+**WARNING**
  - month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
  - use the amount editing/updating commands only if there is some value existing in a given month and category, do not use it on NaN.
 
@@ -53,8 +53,8 @@ WARNING
 | `exit` | Asks to save the changes in Income and Expense tables and exits MonTra |
 | `credits` | Shows the name of the developers |
 
-#### License
+### License
 **Creative Commons Zero v1.0 Universal**
 
-#### Version
+### Version
 **1.0.0**
