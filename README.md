@@ -37,7 +37,7 @@ Install Tabulate - `pip install tabulate`
 | table_name : Month : Category / amount | editing the value by dividing | `income : Apr : Sales / 101`
 
 **WARNING**
- - month and category should be capitalised as shown in the example below and separation from spaces and colon is required.
+ - month and category should be capitalised as shown in the example above and separation from spaces and colon is required.
  - use the amount editing/updating commands only if there is some value existing in a given month and category, do not use it on NaN.
 
 | Commands | Function |
