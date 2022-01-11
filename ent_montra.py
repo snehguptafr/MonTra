@@ -108,7 +108,7 @@ def e_montra():
             err = 1
         try:                                            #Try and Except block for other commands.
             if cmdl[0] == 'credits':                    #command to show credits.
-                print("Developers:")
+                print("Developer:")
                 print("Sneh Gupta")           
                     
             elif cmdl[0] == 'save':                     #command to save changes.
