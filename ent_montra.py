@@ -109,7 +109,7 @@ def e_montra():
         try:                                            #Try and Except block for other commands.
             if cmdl[0] == 'credits':                    #command to show credits.
                 print("Developers:")
-                print("Sneh Gupta\tYash Patel\tDhruvil Joshi")           
+                print("Sneh Gupta")           
                     
             elif cmdl[0] == 'save':                     #command to save changes.
                 inc.to_csv('ent_income.csv')
